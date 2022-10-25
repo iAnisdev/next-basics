@@ -1,5 +1,7 @@
-export default function Postpage() {
+import { useRouter } from "next/router"
+export default function PostIdpage() {
+    const router = useRouter()
     return <>
-        <div>Post page</div>
+        <div>Post with id <b>{router.query.id}</b>  page</div>
     </>
 }
