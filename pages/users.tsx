@@ -44,7 +44,6 @@ const users: NextPage<UserProps> = (props) => {
 export default users
 
 export const getStaticProps: GetStaticProps<UserProps> = async (context) => {
-  console.log(context)
   const response = await fetch('https://jsonplaceholder.typicode.com/users')
   const data = await response.json()
   return {
