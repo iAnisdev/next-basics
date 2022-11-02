@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { NextParsedUrlQuery } from "next/dist/server/request-meta"
-import { useRouter } from "next/router"
-import styles from './post.module.css'
+import styles from './post.module.scss'
 
 interface IParams extends NextParsedUrlQuery {
     id: any
@@ -19,7 +18,6 @@ interface PostProps {
 }
 
 const PostIdpage: NextPage<PostProps> = ({post}) => {
-    const router = useRouter()
     return <div className={styles.container}>
         <h3>{post.title}</h3>
         <br />
@@ -39,7 +37,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
-    console.log(context.params)
     const { id } = context.params as IParams
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
     const data = await response.json()
