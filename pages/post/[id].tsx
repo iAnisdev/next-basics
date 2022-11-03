@@ -6,6 +6,7 @@ import styles from './post.module.scss'
 interface IParams extends NextParsedUrlQuery {
     id: any
 }
+
 interface Post {
     userId: number
     id: number
