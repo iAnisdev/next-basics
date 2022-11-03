@@ -41,9 +41,10 @@ const UserProfile: NextPage<UserProps> = ({ user }) => {
     if (isFallback) {
         return <h1>Loading...</h1>;
     }
+    let titleMessage = `${user.name} Profile Page`
     return <>
         <Head>
-            <title>{user.name} Profile Page</title>
+            <title>{titleMessage}</title>
         </Head>
         <div className={styles.container}>
             <p>{user.username}</p>
