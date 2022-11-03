@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { NextParsedUrlQuery } from "next/dist/server/request-meta"
+import { useRouter } from "next/router"
 import styles from './post.module.scss'
 
 interface IParams extends NextParsedUrlQuery {
@@ -17,7 +18,11 @@ interface PostProps {
     post: Post
 }
 
-const PostIdpage: NextPage<PostProps> = ({post}) => {
+const PostIdpage: NextPage<PostProps> = ({ post }) => {
+    const { isFallback } = useRouter();
+    if (isFallback) {
+        return <h1>Loading...</h1>;
+    }
     return <div className={styles.container}>
         <h3>{post.title}</h3>
         <br />
