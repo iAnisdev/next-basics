@@ -55,7 +55,7 @@ const UserProfile: NextPage<UserProps> = ({ user }) => {
 
 export default UserProfile
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
     const { userId } = context.params as IParams
     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     const data: User = await response.json()
