@@ -37,6 +37,7 @@ const users: NextPage<UserProps> = (props) => {
       <ul>
         {listofUsers}
       </ul>
+      {process.env.NEXT_PUBLIC_ASSET_ID}
     </div>
   )
 }
@@ -44,6 +45,7 @@ const users: NextPage<UserProps> = (props) => {
 export default users
 
 export const getStaticProps: GetStaticProps<UserProps> = async (context) => {
+  console.log(process.env.SERVER_CONFIG)
   const response = await fetch('https://jsonplaceholder.typicode.com/users')
   const data = await response.json()
   return {
